@@ -5,7 +5,7 @@
 
 # has replace 'p' instead of j while putting carrot to hole
 
-
+import os
 
 import random
 import sys
@@ -58,6 +58,7 @@ def generate_map(width, height, num_carrots, num_holes):
 
 # Function to display the game map
 def display_map(game_map):
+    os.system('cls' if os.name == 'nt' else 'cls')
     for row in game_map:
         print(' '.join(row))
     print()
@@ -143,7 +144,6 @@ def move_rabbit(game_map, move):
     # if [rabbit_y,rabbit_y] not in carrot_list or status_of_rabbit == "R" :
     if move == 'a':
         new_x, new_y = rabbit_x - 1, rabbit_y
-        
     elif move == 'd':
         new_x, new_y = rabbit_x + 1, rabbit_y
     elif move == 'w':
@@ -151,22 +151,9 @@ def move_rabbit(game_map, move):
     elif move == 's':
         new_x, new_y = rabbit_x, rabbit_y + 1
 
-
-    # elif status_of_rabbit == 'r':
-    #     new_x, new_y = rabbit_x, rabbit_y
-    #     return
-   
-    
-    # elif move == 'p' and last_place == 'c' :
-    #     new_x, new_y = rabbit_x, rabbit_y
-    #     game_map[new_x][new_y] = 'R'
-    #     print("print @ p ")
-    
     else:
         return
     
-
-#nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 
     if [rabbit_y,rabbit_x] in appended_list_carrot and status_of_rabbit == 'r':
         # print("from 145")
@@ -187,23 +174,7 @@ def move_rabbit(game_map, move):
             # print("r illi chnage agtide sanju")
             game_map[new_y][new_x] = RABBIT
             appended_list_carrot.append([new_y,new_x])
-            # print(appended_list_carrot)
-
-        
-        #********************************************************
-
-        # elif game_map[new_y][new_x] == RABBIT_HOLE :
-        #     game_map[rabbit_y][rabbit_x] = PATHWAY_STONE
-        #     if status_of_rabbit == 'r':
-        #         # print("still r")
-        #         game_map[new_y][new_x] = RABBIT
-        #         rabbit_hole_list.append(new_y,new_x)
-        #     elif status_of_rabbit == "R":
-        #         game_map[new_y][new_x] = RABBIT_WITH_CARROT
-
-           
-        #********************************************************
-
+            
         else:
             # Check if 'R' is adjacent to 'O' (rabbit hole)
             adjacent_cells = [(rabbit_x, rabbit_y - 1), (rabbit_x, rabbit_y + 1),
@@ -216,8 +187,6 @@ def move_rabbit(game_map, move):
                 ):
                     # 'R' reached a rabbit hole, check for win condition
                     game_map[rabbit_y][rabbit_x] = PATHWAY_STONE
-
-                    # print("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
 
                     game_map[new_y][new_x] = RABBIT
                     if check_win(game_map):
@@ -232,7 +201,6 @@ def move_rabbit(game_map, move):
                  game_map[new_y][new_x] = RABBIT_WITH_CARROT
 
 
-#mfdogomfdgmfdgmfdgfmd
     elif game_map[new_y][new_x] == RABBIT_HOLE :
         game_map[rabbit_y][rabbit_x] = PATHWAY_STONE
         if status_of_rabbit == 'r':
@@ -246,10 +214,6 @@ def move_rabbit(game_map, move):
         game_map[rabbit_y][rabbit_x] = RABBIT_HOLE
         game_map[new_y][new_x] = RABBIT
        
-
-
-#fgfdmgmgdfk;mgkdflm kgmdfg fodmgdmgfdg m
-
 
 def check_adjacent():
     adjacent_cells = [(rabbit_x, rabbit_y - 1), (rabbit_x, rabbit_y + 1),
