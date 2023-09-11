@@ -47,4 +47,4 @@ This is a command-line game where you control a rabbit that needs to collect car
 
 ## Author
 
-- [Sanjay K J]
+- Sanjay K J
