@@ -1,4 +1,9 @@
 
+# addded a feature :  unless r picks up carrot r can't move 
+
+# has to jump over holes 
+
+# has replace 'p' instead of j while putting carrot to hole
 
 import os
 
@@ -265,32 +270,25 @@ if __name__ == "__main__":
 
 
         elif move == 'j':
-            rabbit_y, rabbit_x = find_rabbit(game_map)
+            rabbit_x, rabbit_y = find_rabbit(game_map)
             # if [rabbit_y,rabbit_x] in carrot_list and status_of_rabbit == 'r':
             if status_of_rabbit == 'r':
-                    # print("still r")
-                    # write code here sanjay
-                    # game_map[new_y][new_x] = RABBIT        # wanna change
-                # if status_of_rabbit == "R":
-                # new_x, new_y = rabbit_x, rabbit_y
-                move_across_hole()
-                print("line 316 declaring new x and y ")
-                #     pass
-                    # continue
-                    # game_map[new_y][new_x] = RABBIT_WITH_CARRO
-                 # Rabbit already holds a carrot
-            
+                move_across_hole(rabbit_x, rabbit_y)
+                print("line 243 declaring new x and y ")
+               
             hole_x, hole_y = find_rabbit_hole(game_map, rabbit_x, rabbit_y)
             if hole_x is not None:
-                game_map[rabbit_y][rabbit_x] = PATHWAY_STONE
+                game_map[rabbit_x][rabbit_y] = PATHWAY_STONE
                 # game_map[hole_y][hole_x] = RABBIT
                 if status_of_rabbit == 'r':
                     # print("still r")
-                    game_map[adjust_y][adjust_x] = RABBIT
+                    game_map[adjust_x][adjust_y] = RABBIT
                 if status_of_rabbit == "R":
                     if check_adjacent():
-                        game_map[adjust_y][adjust_x] = RABBIT_HOLE
-                        game_map[rabbit_y][rabbit_x] = PATHWAY_STONE
+                        game_map[adjust_x][adjust_y] = RABBIT_HOLE
+                        # game_map[adjust_x][adjust_y] = RABBIT
+                        game_map[rabbit_x][rabbit_y] = PATHWAY_STONE
+                
                         display_map(game_map)
                         print("Congratulations! The rabbit has won!")
                         break
