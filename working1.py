@@ -1,10 +1,4 @@
 
-# addded a feature :  unless r picks up carrot r can't move 
-
-# has to jump over holes 
-
-# has replace 'p' instead of j while putting carrot to hole
-
 import os
 
 import random
